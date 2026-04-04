@@ -2,6 +2,8 @@ package com.example.juke.model;
 
 import java.time.LocalDateTime;
 
+import org.aspectj.weaver.ast.Not;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,15 +28,21 @@ public class Employee {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Nama tidak boleh kosong")
     private String name;
 
     @Column(nullable = false, unique = true)
+    @Email(message = "Email harus valid")
+    @NotBlank(message = "Email tidak boleh kosong")
     private String email;
 
     @Column(nullable = false)
+    @NotBlank(message = "Posisi tidak boleh kosong")
     private String position;
 
     @Column(nullable = false)
+    @NotNull(message = "Gaji tidak boleh kosong")
+    @Positive(message = "Gaji harus positif")
     private double salary;
 
     @Column(nullable = false, updatable = false)
