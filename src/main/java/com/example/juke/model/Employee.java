@@ -2,8 +2,6 @@ package com.example.juke.model;
 
 import java.time.LocalDateTime;
 
-import org.aspectj.weaver.ast.Not;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

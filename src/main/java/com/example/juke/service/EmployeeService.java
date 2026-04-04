@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.juke.exception.ResourceNotFoundException;
 import com.example.juke.model.Employee;
 import com.example.juke.repository.EmployeeRepository;
 
@@ -25,7 +26,7 @@ public class EmployeeService {
         if (employee != null) {
             return employee;
         } else {
-            throw new RuntimeException("Tidak ada employee dengan id: " + id);
+            throw new ResourceNotFoundException("Tidak ada employee dengan id: " + id);
         }
     }
 
@@ -42,7 +43,7 @@ public class EmployeeService {
             existingEmployee.setSalary(updatedEmployee.getSalary());
             return employeeRepository.save(existingEmployee);
         } else {
-            throw new RuntimeException("Tidak ada employee dengan id: " + id);
+            throw new ResourceNotFoundException("Tidak ada employee dengan id: " + id);
         }
     }
 
