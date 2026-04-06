@@ -2,8 +2,12 @@ package com.example.juke.model;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,6 +23,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "employee")
+@EntityListeners(AuditingEntityListener.class)
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +47,8 @@ public class Employee {
     @Positive(message = "Gaji harus positif")
     private Double salary;
 
-    @Column(nullable = false, updatable = false, insertable = false)
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
 }

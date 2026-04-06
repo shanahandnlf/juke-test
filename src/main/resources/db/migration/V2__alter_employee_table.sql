@@ -1,0 +1,1 @@
+ALTER TABLE employee ALTER COLUMN created_at DROP DEFAULT;
